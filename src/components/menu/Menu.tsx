@@ -10,26 +10,48 @@ const Menu = () => {
   const { t } = translate("translate", { keyPrefix: "menu" });
 
   const { pathname } = useLocation();
-  console.log(pathname);
+
   return (
-    <Box>
-      <NavLink to={"/chats"}>
-        <Badge badgeContent={3} color="error">
-          <MessageIcon
-            fill={pathname.includes("chats") ? "#007AFF" : "#CBD9E8"}
-          ></MessageIcon>
-        </Badge>
-      </NavLink>
-      <NavLink to={"/contacts"}>
-        <PersonIcon
-          fill={pathname.includes("contacts") ? "#007AFF" : "#CBD9E8"}
-        ></PersonIcon>
-      </NavLink>
-      <NavLink to={"/settings"}>
-        <SettingIcon
-          fill={pathname.includes("settings") ? "#007AFF" : "#CBD9E8"}
-        ></SettingIcon>
-      </NavLink>
+    <Box className="menuContainer">
+      <Box className="menuContentBox">
+        <Box className="linksBox">
+          <NavLink
+            to={"/chats"}
+            className={() =>
+              pathname.includes("chats") ? "nav-link active" : "nav-link"
+            }
+          >
+            <Badge badgeContent={5} color="error">
+              <MessageIcon
+                fill={pathname.includes("chats") ? "#007AFF" : "#CBD9E8"}
+              ></MessageIcon>
+            </Badge>
+            {t("chats")}
+          </NavLink>
+          <NavLink
+            to={"/contacts"}
+            className={() =>
+              pathname.includes("contacts") ? "nav-link active" : "nav-link"
+            }
+          >
+            <PersonIcon
+              fill={pathname.includes("contacts") ? "#007AFF" : "#CBD9E8"}
+            ></PersonIcon>
+            {t("contacts")}
+          </NavLink>
+          <NavLink
+            to={"/settings"}
+            className={() =>
+              pathname.includes("settings") ? "nav-link active" : "nav-link"
+            }
+          >
+            <SettingIcon
+              fill={pathname.includes("settings") ? "#007AFF" : "#CBD9E8"}
+            ></SettingIcon>
+            {t("settings")}
+          </NavLink>
+        </Box>
+      </Box>
     </Box>
   );
 };
