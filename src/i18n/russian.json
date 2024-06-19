@@ -1,3 +1,9 @@
 {
-  "translate": {}
+  "translate": {
+    "menu": {
+      "chats": "Чаты",
+      "contacts": "Контакты",
+      "settings": "Настройки"
+    }
+  }
 }
