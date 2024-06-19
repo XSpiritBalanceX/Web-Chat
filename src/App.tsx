@@ -1,5 +1,13 @@
+import ScrollToTop from "@components/scrollToTop/ScrollToTop";
+import RouterComponent from "@components/router/RouterComponent";
+
 const App = () => {
-  return <div>Hello world</div>;
+  return (
+    <>
+      <ScrollToTop />
+      <RouterComponent />
+    </>
+  );
 };
 
 export default App;
