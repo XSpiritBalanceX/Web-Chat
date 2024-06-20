@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Box, Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 import ControlsChatList from "./ControlsChatList";
+import ChatItem from "@components/itemInChat/ChatItem";
 import "./ChatPage.scss";
 
 const mockData = [
@@ -67,14 +68,14 @@ const mockData = [
         user: 2,
         message: "Lorem ipsum dolor",
         time: "2024-06-19 15:00",
-        is_read: false,
+        is_read: true,
       },
     ],
   },
   {
     id: 3,
     name: "Mike",
-    photo: "https://www.kino-teatr.ru/acter/album/52909/929591.jpg",
+    photo: "",
     activity: "2024-19-06 15:00",
     online: false,
     messages: [
@@ -190,14 +191,14 @@ const mockData = [
       },
       {
         id: 7,
-        user: 1,
+        user: 4,
         message: "Lorem ipsum dolor",
         time: "2024-06-19 14:43",
         is_read: false,
       },
       {
         id: 8,
-        user: 1,
+        user: 4,
         message: "Lorem ipsum dolor",
         time: "2024-06-19 15:00",
         is_read: false,
@@ -264,7 +265,7 @@ const mockData = [
       },
       {
         id: 8,
-        user: 1,
+        user: 5,
         message: "Lorem ipsum dolor",
         time: "2024-06-19 15:00",
         is_read: false,
@@ -331,7 +332,8 @@ const mockData = [
       {
         id: 8,
         user: 1,
-        message: "Lorem ipsum dolor",
+        message:
+          "Lorem ipsum dolor sit amet, conadipiscing elit. Nunc vulputate libet velit interdum, ac aliquet odio mattis. ",
         time: "2024-06-19 15:00",
         is_read: false,
       },
@@ -361,7 +363,6 @@ const ChatPage = () => {
 
   useEffect(() => {
     setSelectedUser(Number(user) - 1);
-    setFilteredName("");
     // eslint-disable-next-line
   }, [user]);
 
@@ -376,6 +377,16 @@ const ChatPage = () => {
           filteredName={filteredName}
           cbHandleChangeFilter={handleFilterByName}
         />
+        {listOfUsers.map((el, ind) => (
+          <ChatItem
+            key={el.id}
+            conversation_index={ind}
+            user_name={el.name}
+            user_photo={el.photo}
+            messages={el.messages}
+            isSelected={selectedUser === ind}
+          />
+        ))}
       </Box>
     </Container>
   );
