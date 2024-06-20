@@ -1,1 +1,57 @@
 @import "../../variables";
+
+.chatsPageContainer {
+  display: flex !important;
+  flex-direction: row;
+  padding-top: 23px !important;
+  .controlsAndChatsBox {
+    display: flex;
+    flex-direction: column;
+    max-width: 415px;
+    width: 100%;
+    .controlsChatListBox {
+      display: flex;
+      flex-direction: column;
+      max-width: 355px;
+      .titleAndButtonChatsBox {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 12px;
+        p {
+          margin: 0;
+          @extend %h1;
+          width: 100%;
+          text-align: center;
+        }
+        .addMemberButton {
+          width: 24px;
+          height: 24px;
+          min-width: 24px;
+          padding: 0;
+          border-radius: 0;
+        }
+      }
+      .searchChatsListField {
+        .MuiInputBase-root {
+          height: 40px;
+          border-radius: 30px;
+          background-color: map-get($theme-colors, "white");
+          @extend %body-2;
+          fieldset {
+            border-color: map-get($theme-colors, "white");
+          }
+          .MuiInputAdornment-root {
+            svg {
+              margin-right: 8px;
+            }
+          }
+        }
+        .MuiInputBase-root.Mui-focused {
+          fieldset {
+            border-color: map-get($theme-colors, "blue");
+          }
+        }
+      }
+    }
+  }
+}

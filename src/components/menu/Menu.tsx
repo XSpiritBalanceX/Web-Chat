@@ -16,7 +16,7 @@ const Menu = () => {
       <Box className="menuContentBox">
         <Box className="linksBox">
           <NavLink
-            to={"/chats"}
+            to={"/chats/1"}
             className={() =>
               pathname.includes("chats") ? "nav-link active" : "nav-link"
             }
