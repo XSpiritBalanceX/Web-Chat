@@ -136,6 +136,24 @@
       font-size: 25px;
       border-radius: 100%;
     }
+    .controlsSelectedBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      width: calc(100% - 80px);
+      p {
+        margin: 0;
+        @extend %h3;
+      }
+      button {
+        height: 15px;
+        padding: 0;
+        text-transform: none;
+        color: map-get($theme-colors, "blue");
+        @extend %caption-medium;
+      }
+    }
     .userInformationContent {
       display: flex;
       flex-direction: row;
@@ -162,11 +180,119 @@
       }
     }
   }
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: map-get($theme-colors, "gray-2");
+  }
+  ::-webkit-scrollbar-thumb {
+    background: map-get($theme-colors, "blue");
+  }
   .conversationBox {
     background-color: map-get($theme-colors, "white");
     width: 100%;
     margin-top: 10px;
     height: 100%;
     border-radius: 15px 0 0 0;
+    padding: 10px 23px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .messageItemBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+      .messageIdentifier,
+      .selectedMessageIdentifier {
+        width: 23px;
+        height: 23px;
+        border-radius: 100%;
+        margin-left: 25px;
+      }
+      .messageIdentifier {
+        border: solid 2px map-get($theme-colors, "blue");
+      }
+      .selectedMessageIdentifier {
+        border: solid 2px map-get($theme-colors, "blue");
+        background-color: map-get($theme-colors, "blue");
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          fill: map-get($theme-colors, "white");
+          font-size: 15px;
+        }
+      }
+    }
+    .messageItemBox:last-child {
+      margin-bottom: 0;
+    }
+    .messageItemBox.rightMessageBox {
+      justify-content: flex-end;
+      .messageBox {
+        background-color: map-get($theme-colors, "blue");
+        .messageText {
+          color: map-get($theme-colors, "white");
+        }
+        .messageTimeReadBox {
+          .messageTime {
+            color: map-get($theme-colors, "white");
+            opacity: 0.5;
+          }
+          svg {
+            fill: map-get($theme-colors, "white");
+          }
+        }
+      }
+    }
+    .messageItemBox.leftMessageBox {
+      justify-content: space-between;
+      .messageBox {
+        background-color: map-get($theme-colors, "gray-1");
+        .messageText {
+          color: map-get($theme-colors, "light-black");
+        }
+        .messageTimeReadBox {
+          .messageTime {
+            color: map-get($theme-colors, "light-black");
+            opacity: 0.3;
+          }
+          svg {
+            fill: map-get($theme-colors, "light-black");
+          }
+        }
+      }
+    }
+    .messageBox {
+      display: flex;
+      flex-direction: row;
+      border-radius: 20px;
+      padding: 10px 12px;
+      max-width: 312px;
+      width: auto;
+      .messageText {
+        margin: 0;
+        @extend %body-1-medium;
+      }
+      .messageTimeReadBox {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        margin-left: 5px;
+        .messageTime {
+          margin: 0 5px 0 0;
+          @extend %button-navigation;
+          font-weight: 400;
+        }
+        svg {
+          font-size: 15px;
+        }
+      }
+    }
   }
 }

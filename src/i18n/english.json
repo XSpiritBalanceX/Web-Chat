@@ -36,7 +36,8 @@
       "owner": "Owner",
       "media": "Media",
       "files": "Files",
-      "links": "Links"
+      "links": "Links",
+      "selectedMessages": "Selected {{numbers}}"
     }
   }
 }

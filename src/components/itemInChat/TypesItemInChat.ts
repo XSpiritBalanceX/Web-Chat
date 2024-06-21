@@ -20,3 +20,11 @@ export interface IConversationItemProps {
   user_photo: string;
   messages: TMessage[];
 }
+
+export interface IUsersChatProps {
+  messages: TMessage[];
+  cbHandleIsSelectedMessage: (value: boolean) => void;
+  isSelectedMessage: boolean;
+  cbHandleClickOnMessage: (id: number) => void;
+  selectedMessages: number[];
+}

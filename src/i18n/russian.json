@@ -36,7 +36,8 @@
       "owner": "Владелец",
       "media": "Медиа",
       "files": "Файлы",
-      "links": "Ссылки"
+      "links": "Ссылки",
+      "selectedMessages": "Выбрано {{numbers}}"
     }
   }
 }
