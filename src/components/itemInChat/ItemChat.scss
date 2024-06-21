@@ -116,6 +116,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
   .userInformationBox {
     display: flex;
     flex-direction: row;
@@ -191,7 +192,7 @@
   }
   .conversationBox {
     background-color: map-get($theme-colors, "white");
-    width: 100%;
+    width: auto;
     margin-top: 10px;
     height: 100%;
     border-radius: 15px 0 0 0;
@@ -293,6 +294,66 @@
           font-size: 15px;
         }
       }
+    }
+  }
+}
+
+.controlsChatBox {
+  position: absolute;
+  bottom: -80px;
+  left: 0;
+  z-index: 1;
+  height: 50px;
+  width: 100%;
+  padding: 15px 0;
+  .controlsNewMessageBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .newMessageField {
+      width: 100%;
+      margin: 0 10px;
+      .MuiInputBase-root {
+        height: 43px;
+        border-radius: 30px;
+        background-color: map-get($theme-colors, "gray-1");
+        @extend %body-1;
+        input {
+          color: map-get($theme-colors, "black");
+          @extend %body-1-medium;
+        }
+        fieldset {
+          border-color: map-get($theme-colors, "gray-1");
+        }
+      }
+      .MuiInputBase-root.Mui-focused {
+        background-color: map-get($theme-colors, "white");
+        fieldset {
+          border-color: map-get($theme-colors, "blue");
+        }
+      }
+    }
+    button {
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+    }
+  }
+  .controlsSelectedChatBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    button {
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+    }
+    .deleteMessageButton {
+      margin-right: 55px;
     }
   }
 }

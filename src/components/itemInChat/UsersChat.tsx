@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Box } from "@mui/material";
 import { IUsersChatProps } from "./TypesItemInChat";
 import moment from "moment";
@@ -13,6 +14,16 @@ const UsersChat = ({
   isSelectedMessage,
 }: IUsersChatProps) => {
   const mockUserID = 1;
+
+  useEffect(() => {
+    const container = document.querySelector(".conversationBox ");
+    if (container) {
+      const lastVisibleElement =
+        container.children[container.children.length - 1];
+      lastVisibleElement.scrollIntoView({ behavior: "smooth" });
+    }
+    // eslint-disable-next-line
+  }, [messages]);
 
   const handleClickOnMessage = (id: number) => {
     cbHandleIsSelectedMessage(true);

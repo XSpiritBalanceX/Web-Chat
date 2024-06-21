@@ -5,6 +5,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { translate } from "@i18n";
 import UsersChat from "./UsersChat";
 import moment from "moment";
+import ControlsChat from "./ControlsChat";
 import "./ItemChat.scss";
 
 const ConversationItem = ({
@@ -17,6 +18,7 @@ const ConversationItem = ({
 }: IConversationItemProps) => {
   const { t } = translate("translate", { keyPrefix: "chatPage" });
 
+  const [currentMessages, setCurrentMessages] = useState(messages);
   const [isSelectedMessage, setIsSelectedMessage] = useState(false);
   const [selectedMessages, setSelectedMessages] = useState<number[]>([]);
 
@@ -28,6 +30,7 @@ const ConversationItem = ({
   useEffect(() => {
     setIsSelectedMessage(false);
     setSelectedMessages([]);
+    setCurrentMessages(messages);
     // eslint-disable-next-line
   }, [user_id]);
 
@@ -50,6 +53,32 @@ const ConversationItem = ({
       copyData.push(id);
     }
     setSelectedMessages(copyData);
+  };
+
+  const handleAddMessage = (text: string) => {
+    console.log(text);
+    /*   const newMessage = {
+      id: currentMessages[currentMessages.length - 1].id + 1,
+      user: 1,
+      message: text,
+      time: moment().format("YYYY-MM-DD HH:mm"),
+      is_read: false,
+    };
+    const copyData = currentMessages.slice();
+    copyData.push(newMessage);
+    setCurrentMessages(copyData); */
+  };
+
+  const handleDeleteMessages = () => {
+    console.log("delete messages");
+    /* const newData = currentMessages.filter(
+      (el) => !selectedMessages.includes(el.id)
+    );
+    setCurrentMessages(newData); */
+  };
+
+  const handleResendMessages = () => {
+    console.log("resend messages");
   };
 
   const lastUserActivity = (time: string) => {
@@ -101,11 +130,17 @@ const ConversationItem = ({
         )}
       </Box>
       <UsersChat
-        messages={messages}
+        messages={currentMessages}
         cbHandleIsSelectedMessage={handleIsSelectedMessage}
         isSelectedMessage={isSelectedMessage}
         cbHandleClickOnMessage={handleClickOnMessages}
         selectedMessages={selectedMessages}
+      />
+      <ControlsChat
+        isSelectedMessage={isSelectedMessage}
+        cbHandleAddMessage={handleAddMessage}
+        cbHandleDeleteMessages={handleDeleteMessages}
+        cbHandleResendMessages={handleResendMessages}
       />
     </Box>
   );

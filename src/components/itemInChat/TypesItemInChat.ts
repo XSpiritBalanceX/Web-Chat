@@ -30,3 +30,10 @@ export interface IUsersChatProps {
   cbHandleClickOnMessage: (id: number) => void;
   selectedMessages: number[];
 }
+
+export interface IControlsChatProps {
+  isSelectedMessage: boolean;
+  cbHandleAddMessage: (text: string) => void;
+  cbHandleDeleteMessages: () => void;
+  cbHandleResendMessages: () => void;
+}
