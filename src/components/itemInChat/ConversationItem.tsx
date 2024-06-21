@@ -4,13 +4,15 @@ import { IConversationItemProps } from "./TypesItemInChat";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { translate } from "@i18n";
 import UsersChat from "./UsersChat";
-import { useParams } from "react-router-dom";
+import moment from "moment";
 import "./ItemChat.scss";
 
 const ConversationItem = ({
   user_id,
   user_name,
   user_photo,
+  time_activity,
+  online,
   messages,
 }: IConversationItemProps) => {
   const { t } = translate("translate", { keyPrefix: "chatPage" });
@@ -50,6 +52,15 @@ const ConversationItem = ({
     setSelectedMessages(copyData);
   };
 
+  const lastUserActivity = (time: string) => {
+    const currentTime = moment();
+    const userTime = moment(time);
+    const diffTime = currentTime.diff(userTime, "minutes");
+    return diffTime < 60
+      ? t("onlineMin", { time: diffTime })
+      : t("onlineRecen");
+  };
+
   return (
     <Box className="conversationContainer">
       <Box className="userInformationBox">
@@ -67,7 +78,12 @@ const ConversationItem = ({
           <Box className="userInformationContent">
             <Box>
               <p className="userName">{user_name}</p>
-              <p className="userActivity">была в сети</p>
+              {online && <p className="userActivity">{t("online")}</p>}
+              {!online && (
+                <p className="userActivity">
+                  {lastUserActivity(time_activity)}
+                </p>
+              )}
             </Box>
             <Button type="button" className="moreOptionsButton">
               <MoreHorizIcon />

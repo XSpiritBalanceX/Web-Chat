@@ -94,7 +94,7 @@ const mockData = [
     id: 3,
     name: "Mike",
     photo: "",
-    activity: "2024-19-06 15:00",
+    activity: "2024-06-21 12:00",
     online: false,
     messages: [
       {
@@ -485,6 +485,8 @@ const ChatPage = () => {
           user_id={currentConversation.id}
           user_name={currentConversation.name}
           user_photo={currentConversation.photo}
+          time_activity={currentConversation.activity}
+          online={currentConversation.online}
           messages={currentConversation.messages}
         />
       )}

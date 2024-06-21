@@ -18,6 +18,8 @@ export interface IConversationItemProps {
   user_id: number;
   user_name: string;
   user_photo: string;
+  time_activity: string;
+  online: boolean;
   messages: TMessage[];
 }
 
