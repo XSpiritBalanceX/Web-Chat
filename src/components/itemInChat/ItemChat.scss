@@ -110,3 +110,63 @@
     }
   }
 }
+
+.conversationContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .userInformationBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .userPhotoInConversation,
+    .userInitialConversation {
+      width: 70px;
+      height: 70px;
+      margin-right: 10px;
+    }
+    .userInitialConversation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: map-get($theme-colors, "blue");
+      color: map-get($theme-colors, "white");
+      @extend %h1;
+      font-size: 25px;
+      border-radius: 100%;
+    }
+    .userInformationContent {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: calc(100% - 80px);
+      .userName {
+        margin: 0 0 10px 0;
+        @extend %h1;
+      }
+      .userActivity {
+        margin: 0;
+        @extend %caption;
+        color: map-get($theme-colors, "gray-4");
+      }
+      .moreOptionsButton {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        border-radius: 0;
+        svg {
+          fill: map-get($theme-colors, "blue");
+        }
+      }
+    }
+  }
+  .conversationBox {
+    background-color: map-get($theme-colors, "white");
+    width: 100%;
+    margin-top: 10px;
+    height: 100%;
+    border-radius: 15px 0 0 0;
+  }
+}

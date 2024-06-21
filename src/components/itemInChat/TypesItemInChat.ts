@@ -13,3 +13,10 @@ export interface IChatItemProps {
   messages: TMessage[];
   isSelected: boolean;
 }
+
+export interface IConversationItemProps {
+  user_id: number;
+  user_name: string;
+  user_photo: string;
+  messages: TMessage[];
+}
