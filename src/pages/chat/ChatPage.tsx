@@ -471,6 +471,7 @@ const ChatPage = () => {
           {listOfUsers.map((el, ind) => (
             <ChatItem
               key={el.id}
+              id={el.id}
               conversation_index={ind}
               user_name={el.name}
               user_photo={el.photo}

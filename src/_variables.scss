@@ -10,6 +10,9 @@ $theme-colors: (
   "black": #000,
   "light-black": #02274f,
   "red": #c92727,
+  "shadow": (
+    "deep-blue-shadow": 0 5px 15px 0 #003284,
+  ),
 );
 
 @function map-deep-get($map, $keys...) {

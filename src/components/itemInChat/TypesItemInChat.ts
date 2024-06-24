@@ -7,6 +7,7 @@ export type TMessage = {
 };
 
 export interface IChatItemProps {
+  id: number;
   conversation_index: number;
   user_name: string;
   user_photo: string;

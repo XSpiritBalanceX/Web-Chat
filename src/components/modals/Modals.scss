@@ -1,0 +1,40 @@
+@import "../../variables";
+
+.chatItemModalBox {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  background-color: map-get($theme-colors, "white");
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+  border-radius: 15px;
+  padding: 15px 10px;
+  box-shadow: map-deep-get($theme-colors, "shadow", "deep-blue-shadow");
+  button {
+    padding: 0;
+    @extend %body-1-medium;
+    text-transform: none;
+    margin-bottom: 15px;
+    color: map-get($theme-colors, "black");
+    border-radius: 0;
+    svg {
+      margin-right: 10px;
+    }
+  }
+  .closeChatItemModalButton {
+    width: 100%;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: auto;
+    svg {
+      margin-right: 0;
+      font-size: 17px;
+    }
+  }
+  .deleteItemChatButton {
+    margin-bottom: 0;
+    color: map-get($theme-colors, "red");
+  }
+}

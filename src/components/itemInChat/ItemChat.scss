@@ -1,5 +1,9 @@
 @import "../../variables";
 
+.wrapperChatItem {
+  position: relative;
+}
+
 .chatItemBox {
   display: flex;
   flex-direction: row;
