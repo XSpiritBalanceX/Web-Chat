@@ -165,6 +165,7 @@
       justify-content: space-between;
       align-items: center;
       width: calc(100% - 80px);
+      position: relative;
       .userName {
         margin: 0 0 10px 0;
         @extend %h1;

@@ -38,3 +38,39 @@
     color: map-get($theme-colors, "red");
   }
 }
+
+.conversationModalBox {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  padding: 15px 10px;
+  background-color: map-get($theme-colors, "white");
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: map-deep-get($theme-colors, "shadow", "deep-blue-shadow");
+  width: 244px;
+  button {
+    padding: 0;
+    @extend %body-1-medium;
+    text-transform: none;
+    margin-bottom: 15px;
+    color: map-get($theme-colors, "black");
+    border-radius: 0;
+    svg {
+      margin-right: 10px;
+    }
+  }
+  button:last-child {
+    margin-bottom: 0;
+  }
+  .redConversationButton {
+    color: map-get($theme-colors, "red");
+  }
+  .backButton {
+    svg {
+      font-size: 19px;
+    }
+  }
+}

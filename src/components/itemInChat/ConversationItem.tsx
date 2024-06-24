@@ -6,6 +6,7 @@ import { translate } from "@i18n";
 import UsersChat from "./UsersChat";
 import moment from "moment";
 import ControlsChat from "./ControlsChat";
+import ConversationModal from "@components/modals/ConversationModal";
 import "./ItemChat.scss";
 
 const ConversationItem = ({
@@ -21,6 +22,7 @@ const ConversationItem = ({
   const [currentMessages, setCurrentMessages] = useState(messages);
   const [isSelectedMessage, setIsSelectedMessage] = useState(false);
   const [selectedMessages, setSelectedMessages] = useState<number[]>([]);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   useEffect(() => {
     !selectedMessages.length && setIsSelectedMessage(false);
@@ -81,6 +83,10 @@ const ConversationItem = ({
     console.log("resend messages");
   };
 
+  const handleShowModal = () => {
+    setIsShowModal(!isShowModal);
+  };
+
   const lastUserActivity = (time: string) => {
     const currentTime = moment();
     const userTime = moment(time);
@@ -114,9 +120,14 @@ const ConversationItem = ({
                 </p>
               )}
             </Box>
-            <Button type="button" className="moreOptionsButton">
+            <Button
+              type="button"
+              className="moreOptionsButton"
+              onClick={handleShowModal}
+            >
               <MoreHorizIcon />
             </Button>
+            {isShowModal && <ConversationModal user_id={user_id} />}
           </Box>
         )}
         {isSelectedMessage && (
