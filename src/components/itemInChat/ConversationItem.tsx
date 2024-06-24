@@ -57,9 +57,9 @@ const ConversationItem = ({
     setSelectedMessages(copyData);
   };
 
-  const handleAddMessage = (text: string) => {
+  const handleAddMessage = (text: string | Blob) => {
     console.log(text);
-    /*   const newMessage = {
+    /* const newMessage = {
       id: currentMessages[currentMessages.length - 1].id + 1,
       user: 1,
       message: text,

@@ -83,9 +83,12 @@ const ChatItem = ({
             </Box>
           </Box>
           <p className="messageText">
-            {lastMessage.message.length > allowMessageLength
-              ? `${lastMessage.message.slice(0, allowMessageLength)}...`
-              : lastMessage.message}
+            {typeof lastMessage.message === "string" &&
+              (lastMessage.message as string).length > allowMessageLength &&
+              `${lastMessage.message.slice(0, allowMessageLength)}...`}
+            {typeof lastMessage.message === "string" &&
+              (lastMessage.message as string).length < allowMessageLength &&
+              lastMessage.message}
           </p>
         </Box>
       </Box>

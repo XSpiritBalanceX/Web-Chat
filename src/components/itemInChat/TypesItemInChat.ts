@@ -1,7 +1,7 @@
 export type TMessage = {
   id: number;
   user: number;
-  message: string;
+  message: string | Blob;
   time: string;
   is_read: boolean;
 };
@@ -34,7 +34,7 @@ export interface IUsersChatProps {
 
 export interface IControlsChatProps {
   isSelectedMessage: boolean;
-  cbHandleAddMessage: (text: string) => void;
+  cbHandleAddMessage: (text: string | Blob) => void;
   cbHandleDeleteMessages: () => void;
   cbHandleResendMessages: () => void;
 }

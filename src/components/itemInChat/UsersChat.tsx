@@ -41,7 +41,11 @@ const UsersChat = ({
           onClick={() => handleClickOnMessage(el.id)}
         >
           <Box className="messageBox">
-            <p className="messageText">{el.message}</p>
+            {el.message instanceof Blob ? (
+              <audio src={URL.createObjectURL(el.message)} controls />
+            ) : (
+              <p className="messageText">{el.message}</p>
+            )}
             <Box className="messageTimeReadBox">
               <p className="messageTime">{moment(el.time).format("HH:mm")}</p>
               {el.is_read && <DoneAllIcon />}

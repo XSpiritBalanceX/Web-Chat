@@ -344,6 +344,16 @@
       width: 32px;
       height: 32px;
       min-width: 32px;
+      svg {
+        fill: map-get($theme-colors, "blue");
+      }
+    }
+    .stopRecordingButton {
+      border: solid 2px map-get($theme-colors, "red");
+      border-radius: 100%;
+      svg {
+        fill: map-get($theme-colors, "red");
+      }
     }
   }
   .controlsSelectedChatBox {

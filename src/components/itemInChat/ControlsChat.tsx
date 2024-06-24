@@ -3,9 +3,10 @@ import { Box, Button, TextField } from "@mui/material";
 import { IControlsChatProps } from "./TypesItemInChat";
 import { translate } from "@i18n";
 import ClipIcon from "@components/icons/ClipIcon";
-import MicrophoneIcon from "@components/icons/MicrophoneIcon";
 import BucketIcon from "@components/icons/BucketIcon";
 import ArrowRightIcon from "@components/icons/ArrowRightIcon";
+import SendIcon from "@mui/icons-material/Send";
+import RecordingButton from "@components/buttons/RecordingButton";
 import "./ItemChat.scss";
 
 const ControlsChat = ({
@@ -17,11 +18,18 @@ const ControlsChat = ({
   const { t } = translate("translate", { keyPrefix: "chatPage" });
 
   const [newMessage, setNewMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     isSelectedMessage && setNewMessage("");
     // eslint-disable-next-line
   }, [isSelectedMessage]);
+
+  useEffect(() => {
+    !newMessage && setIsTyping(false);
+    newMessage && setIsTyping(true);
+    // eslint-disable-next-line
+  }, [newMessage]);
 
   const handleAddNewMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewMessage(e.currentTarget.value);
@@ -34,12 +42,23 @@ const ControlsChat = ({
     }
   };
 
+  const handleAddMessageButton = () => {
+    if (newMessage) {
+      cbHandleAddMessage(newMessage);
+      setNewMessage("");
+    }
+  };
+
   const handleDeleteMessages = () => {
     cbHandleDeleteMessages();
   };
 
   const handleResendMessages = () => {
     cbHandleResendMessages();
+  };
+
+  const handleAddVoiceMessage = (message: Blob) => {
+    cbHandleAddMessage(message);
   };
 
   return (
@@ -56,9 +75,14 @@ const ControlsChat = ({
             onKeyDown={handleAddMessage}
             className="newMessageField"
           />
-          <Button type="button">
-            <MicrophoneIcon fill="#007AFF" />
-          </Button>
+          {!isTyping && (
+            <RecordingButton cbHandleAddVoiceMessage={handleAddVoiceMessage} />
+          )}
+          {isTyping && (
+            <Button type="button" onClick={handleAddMessageButton}>
+              <SendIcon />
+            </Button>
+          )}
         </Box>
       )}
       {isSelectedMessage && (
